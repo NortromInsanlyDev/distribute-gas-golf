@@ -2,10 +2,10 @@
 pragma solidity 0.8.15;
 
 contract Distribute {
-    address[4] public contributors;
+    address[6] public contributors;
     uint256 public createTime;
 
-    constructor(address[4] memory _contributors) payable {
+    constructor(address[6] memory _contributors) payable {
         contributors = _contributors;
         createTime = block.timestamp;
     }
@@ -16,10 +16,12 @@ contract Distribute {
             "cannot distribute yet"
         );
 
-        uint256 amount = address(this).balance / 4;
+        uint256 amount = address(this).balance / 6;
         payable(contributors[0]).transfer(amount);
         payable(contributors[1]).transfer(amount);
         payable(contributors[2]).transfer(amount);
         payable(contributors[3]).transfer(amount);
+        payable(contributors[4]).transfer(amount);
+        payable(contributors[5]).transfer(amount);
     }
 }
